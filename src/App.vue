@@ -1,0 +1,42 @@
+<script setup>
+import { reactive, effect, effectScope } from 'vue';
+
+const scope = effectScope();
+scope.run(() => {
+  const state = reactive({ age: 30 });
+  effect(() => {
+    console.log(state.age);
+  });
+  setTimeout(() => {
+    state.age++;
+  }, 2000);
+});
+
+scope.run(() => {
+  const state = reactive({ age: 30 });
+  effect(() => {
+    console.log(state.age);
+  });
+  setTimeout(() => {
+    state.age++;
+  }, 2000);
+});
+
+scope.stop();
+</script>
+
+<template></template>
+
+<style scoped>
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.vue:hover {
+  filter: drop-shadow(0 0 2em #42b883aa);
+}
+</style>
